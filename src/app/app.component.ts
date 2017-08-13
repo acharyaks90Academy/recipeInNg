@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  feratureSelected = "recipe";
+  onNavigate(feature:string){
+    this.feratureSelected = feature;
+  }
 }
