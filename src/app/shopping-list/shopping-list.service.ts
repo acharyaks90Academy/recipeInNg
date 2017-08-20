@@ -11,4 +11,13 @@ export class ShoppingListService{
       getIngredients(){
           return this.ingredients
       }
+      addIngredient(ingredient:Ingredient){
+          this.ingredients.push(ingredient);
+      }
+      addIngredientsToSpl(ingredientsM:Ingredient[]){
+        // for(let ingredient of ingredients ){
+        //     this.addIngredient(ingredient);
+        // }
+        this.ingredients.push(...ingredientsM);
+      }
 }
