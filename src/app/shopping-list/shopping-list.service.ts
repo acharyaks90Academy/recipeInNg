@@ -3,6 +3,7 @@ import {Subject} from 'rxjs/Subject';
 
 export class ShoppingListService{
     ingredientAdded = new Subject<Ingredient>();
+    startedEditing = new Subject<number>();
     ingredients :Ingredient[]=[
         new Ingredient('Apples',5),
         new Ingredient('Tommatoes',10)
@@ -20,4 +21,5 @@ export class ShoppingListService{
         // }
         this.ingredients.push(...ingredientsM);
       }
+
 }
