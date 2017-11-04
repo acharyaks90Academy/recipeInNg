@@ -22,7 +22,7 @@
             <label for="imagepath">Image Url</label>
             <input type="text" id="imagepath" 
              formControlName="imagepath"
-            class="form-control">
+            class="form-control" #imagepath>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <img src="" class="img-responsive" />
+            <img [src]="imagepath.value" class="img-responsive" />
           </div>
         </div>
       </div>
