@@ -1,12 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { error } from 'selenium-webdriver';
+import { Injectable } from '@angular/core';
+
+//import { error } from 'selenium-webdriver';
+
 
 @Injectable()
 export class AuthService {
+  token: string = null;
 
-  constructor() { }
-  token : string;
+  constructor(private router : Router) { 
+    
+  }
+  
   signupUser(email:string,password:string){
     firebase.auth().createUserWithEmailAndPassword(email,password)
     .catch(
@@ -17,9 +23,10 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email,password)
     .then(
       response => {
+        this.router.navigate(['/']);
         firebase.auth().currentUser.getToken()
         .then(
-          (token:string)=>this.token = token
+          (token:string) => this.token = token
         )
       }
     )  
@@ -34,6 +41,17 @@ export class AuthService {
        (token: string) => this.token = token
        )
     return this.token;
+  }
+
+  isAuthenticated() {
+    
+    return this.token !=null;
+  }
+
+  signOut(){
+    console.log('343434');
+    firebase.auth().signOut();
+    this.token = null;
   }
 
 }
