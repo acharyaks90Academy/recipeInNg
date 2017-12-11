@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import {ShoppingListService} from './shopping-list/shopping-list.service';
 import {RecipeService} from './recipes/recipe.service';
 import { HomeComponent } from './core/home/home.component';
+import { PreloadAllModules } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ const appRoutes : Routes = [
 ]; 
 
 @NgModule({
-    imports:[RouterModule.forRoot(appRoutes)],
+    imports:[RouterModule.forRoot(appRoutes,{preloadingStrategy:PreloadAllModules})],
     exports :[RouterModule]
 })
 
