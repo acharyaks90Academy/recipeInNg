@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-  token: string = null;
+  token: string ;
 
   constructor(private router : Router) { 
     
@@ -44,8 +44,11 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    
-    return this.token !=null;
+     if(this.token){
+       return true;
+      }else{
+        return false;
+      }
   }
 
   signOut(){
