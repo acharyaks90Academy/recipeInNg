@@ -11,18 +11,18 @@
              
             <ul class="nav narbar-nav navbar-right">
                
-                    <li routerLinkActive="active" *ngIf="isAuthenticated()">
+                    <li routerLinkActive="active" *ngIf="authService.isAuthenticated()">
                         <a routerLink="/signin">Login</a>
                     </li>
-                    <li routerLinkActive="active" *ngIf="isAuthenticated()">
+                    <li routerLinkActive="active" *ngIf="authService.isAuthenticated()">
                         <a routerLink="/signup">Register</a>
                     </li>
                
-                <li  *ngIf="!isAuthenticated()">
+                <li  *ngIf="!authService.isAuthenticated()">
                     <a  style="cursor:pointer" (click)="logOut()">Logout</a>
                     </li>
               
-                    <li class="dropdown" appDropdown *ngIf="!isAuthenticated()">
+                    <li class="dropdown" appDropdown *ngIf="!authService.isAuthenticated()">
                         <a style="cursor:pointer" class="dropdown-toggle" role="button">Manage
                             <span class="caret"></span>
                         </a>

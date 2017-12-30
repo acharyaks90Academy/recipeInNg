@@ -2,8 +2,6 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
 
-//import { error } from 'selenium-webdriver';
-
 
 @Injectable()
 export class AuthService {

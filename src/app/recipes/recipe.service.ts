@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
-import {Recipe}  from './recipe.model';
-import {Ingredient} from '../shared/ingredient.model';
-import {ShoppingListService} from '../shopping-list/shopping-list.service';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService{
@@ -11,43 +11,35 @@ export class RecipeService{
         new Recipe('Test Recipe','Very Spicy recipe',
         'assets/Easy-Avocado-Shrimp-Salad-Recipe.jpg',
         [
-            new Ingredient('Biscuit',10), new Ingredient('Chips',20)
+            new Ingredient('Biscuit', 10), new Ingredient('Chips',20)
         ]
     ),
         new Recipe('Normal Recipe',
         'Very tousted recipe',
         'assets/Easy-Avocado-Shrimp-Salad-Recipe.jpg',
         [
-            new Ingredient('Meat',10), new Ingredient('Fries',20)
+            new Ingredient('Meat', 10), new Ingredient('Fries', 20)
         ])
       ];
 
-      constructor(private splService:ShoppingListService){
+      constructor(private splService:ShoppingListService) {
 
       }
       getRecipes(){
-          return this.recipes;
+          return this.recipes.slice();
       }
 
-      setRecipes(recipest: any){
+      setRecipes(recipest: Recipe[]){
 
           console.log('asa',this.recipes,'...new',recipest);
           this.recipes.length = 0;
           this.recipes = recipest;
           this.recipeChanged.next(this.recipes.slice());
-        //   recipest.map(obj=>{
-        //       this.recipes.push(new Recipe(obj.name, obj.description,
-        //           obj.imagePath,
-        //           [
-        //           ]
-        //       ))  
-        //   })
       }
-      getRecipe(id:number){
-
+      getRecipe(id: number) {
           return this.recipes.slice()[id];
       }
-      addIngredienttoSpl(ingredients:Ingredient[]){
+      addIngredienttoSpl(ingredients: Ingredient[]) {
         this.splService.addIngredientsToSpl(ingredients);
       }
       
@@ -56,13 +48,13 @@ export class RecipeService{
           this.recipeChanged.next(this.recipes.slice());
       }
 
-      updateRecipe(index : number,recipe:Recipe){
-          this.recipes[index]=recipe;
+      updateRecipe(index : number, newRecipe: Recipe) {
+          this.recipes[index] = newRecipe;
           this.recipeChanged.next(this.recipes.slice());
 
       }
       deleteRecipe(index : number){
-          this.recipes.splice(index,1);
+          this.recipes.splice(index, 1);
           this.recipeChanged.next(this.recipes.slice());
 
       }

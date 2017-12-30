@@ -1,10 +1,13 @@
 <div class="row">
   <div class="col-xs-12">
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" >
-      <div class="col-xs-12">
-        <button type="submit" [disabled]="!recipeForm.valid" class="btn-success">Save</button>
-        <button type="button" (click)="onCancel()" class="btn-danger">Cancel</button>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" [disabled]="!recipeForm.valid" class="btn-success">Save</button>
+          <button type="button" (click)="onCancel()" class="btn-danger">Cancel</button>
+        </div>
       </div>
+      
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
